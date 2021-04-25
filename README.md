@@ -1,20 +1,22 @@
 ## About
 This repository consists of the implementations for the models proposed in the paper titled "**Multi-source Multi-view Transfer Learning in Neural Topic Modeling with Pretrained Topic and Word Embeddings**" accepted at **NAACL2021**.
 
->@article{gupta2021multi,
->title={Multi-source Neural Topic Modeling in Multi-view Embedding Spaces},
->author={Gupta, Pankaj and Chaudhary, Yatin and Sch{\"u}tze, Hinrich},
->journal={arXiv preprint arXiv:2104.08551},
->year={2021}
->}
+	@article{gupta2021multi,
+	title={Multi-source Neural Topic Modeling in Multi-view Embedding Spaces},
+	author={Gupta, Pankaj and Chaudhary, Yatin and Sch{\"u}tze, Hinrich},
+	journal={arXiv preprint arXiv:2104.08551},
+	year={2021}
+	}
 
 *NOTE*: This code has been built upon the DocNADEe code.
 
 
 ## Requirements
 Requires Python 3 (tested with `3.6.5`). The remaining dependencies can then be installed via:
-> $ pip install -r requirements.txt
-> $ python -c "import nltk; nltk.download('all')"
+
+	$ pip install -r requirements.txt
+	$ python -c "import nltk; nltk.download('all')"
+
 *NOTE*: installation of correct dependencies and version ensure the correct working of code.
 
 
@@ -65,52 +67,57 @@ The script **train_DocNADE_MVT_MST.py** will train the DocNADE-MVT model and sav
 > - Option ``bert-reps-path`` is the path for BERT contextualized embedings.
 
 **Local View Transfer (LVT)**:
-> set parameter ``use-embeddings-prior`` to True
-> set parameter ``lambda-embeddings-list`` for lambda parameter of LVT accordingly
+
+	set parameter ``use-embeddings-prior`` to True
+	set parameter ``lambda-embeddings-list`` for lambda parameter of LVT accordingly
 
 **Global View Transfer (GVT)**:
-> set parameter ``gvt_loss`` to True
-> set parameter ``gvt_lambda_init`` for gamma parameter of GVT accordingly
+
+	set parameter ``gvt_loss`` to True
+	set parameter ``gvt_lambda_init`` for gamma parameter of GVT accordingly
 
 **Multi View Transfer (MVT)**:
-> set parameters for LVT and GVT as mentioned above
+
+	set parameters for LVT and GVT as mentioned above
 
 *NOTE*: Remove a parameter from the list in configuration file if it is not required when running an experiment.
 *NOTE*: Sample scripts for three different cases (with best parameters setting) have been provided with the code.
 
 
 ## Dataset and Saved models directories
-> datasets directory     ->  ./datasets/
-> saved model directory  ->  ./model/
+	datasets directory     ->  ./datasets/
+	saved model directory  ->  ./model/
 
 
 ## Model Files
-> train_docNADE_MVT_MST.py  ->  Main training file
-> model_MVT_MST.py          ->  Model file
+	train_docNADE_MVT_MST.py  ->  Main training file
+	model_MVT_MST.py          ->  Model file
 
 
 ## Script Files
-> train_20NSshort_ALL_docnade_tanh_LL.sh -> Script file to run MST + MVT for 20NSshort dataset (IR)
+	train_20NSshort_ALL_docnade_tanh_LL.sh -> Script file to run MST + MVT for 20NSshort dataset (IR)
 
 
 ## Directory structure containing results of training
-**Example trained model directory**: "20NSshort_ALL_BERT_emb_glove_1.0_emb_lambda_manual_1.0_0.5_0.1_1.0_ftt__bert__act_tanh_hid_200_vocab_1448_lr_0.0001_gvt_loss_True_manual0.1_0.01_0.001_0.1_projection_cp_1.0__2_6_2020"
+Example **model_dir**: 
+"20NSshort_ALL_BERT_emb_glove_1.0_emb_lambda_manual_1.0_0.5_0.1_1.0_ftt__bert__act_tanh_hid_200_vocab_1448_lr_0.0001_gvt_loss_True_manual0.1_0.01_0.001_0.1_projection_cp_1.0__2_6_2020"
 
-**Results directory**:               ./20NSshort_ALL_BERT_emb_glove_1.0_emb_lambda_manual_1.0_0.5_0.1_1.0_ftt__bert__act_tanh_hid_200_vocab_1448_lr_0.0001_gvt_loss_True_manual0.1_0.01_0.001_0.1_projection_cp_1.0__2_6_2020/
+	**Results directory**           ->  ./<model_dir>/
 
-**Saved PPL model directory**:       ./model/20NSshort_ALL_BERT_emb_glove_1.0_emb_lambda_manual_1.0_0.5_0.1_1.0_ftt__bert__act_tanh_hid_200_vocab_1448_lr_0.0001_gvt_loss_True_manual0.1_0.01_0.001_0.1_projection_cp_1.0__2_6_2020/model_ppl/
+	**Saved PPL model directory**   ->  ./model/<model_dir>/model_ppl/
 
-**Saved IR model directory**:        ./model/20NSshort_ALL_BERT_emb_glove_1.0_emb_lambda_manual_1.0_0.5_0.1_1.0_ftt__bert__act_tanh_hid_200_vocab_1448_lr_0.0001_gvt_loss_True_manual0.1_0.01_0.001_0.1_projection_cp_1.0__2_6_2020/model_ir/
+	**Saved IR model directory**    ->  ./model/<model_dir>/model_ir/
 
-**Saved logs model directory**:      ./model/20NSshort_ALL_BERT_emb_glove_1.0_emb_lambda_manual_1.0_0.5_0.1_1.0_ftt__bert__act_tanh_hid_200_vocab_1448_lr_0.0001_gvt_loss_True_manual0.1_0.01_0.001_0.1_projection_cp_1.0__2_6_2020/logs/
+	**Saved logs model directory**  ->  ./model/<model_dir>/logs/
 
-**Training information**:            ./model/20NSshort_ALL_BERT_emb_glove_1.0_emb_lambda_manual_1.0_0.5_0.1_1.0_ftt__bert__act_tanh_hid_200_vocab_1448_lr_0.0001_gvt_loss_True_manual0.1_0.01_0.001_0.1_projection_cp_1.0__2_6_2020/logs/training_info.txt
+	**Training information**        ->  ./model/<model_dir>/logs/training_info.txt
 
-**Reload IR results**:               ./model/20NSshort_ALL_BERT_emb_glove_1.0_emb_lambda_manual_1.0_0.5_0.1_1.0_ftt__bert__act_tanh_hid_200_vocab_1448_lr_0.0001_gvt_loss_True_manual0.1_0.01_0.001_0.1_projection_cp_1.0__2_6_2020/logs/reload_info_ir.txt
+	**Reload IR results**           ->  ./model/<model_dir>/logs/reload_info_ir.txt
 
-**Reload PPL results**:              ./model/20NSshort_ALL_BERT_emb_glove_1.0_emb_lambda_manual_1.0_0.5_0.1_1.0_ftt__bert__act_tanh_hid_200_vocab_1448_lr_0.0001_gvt_loss_True_manual0.1_0.01_0.001_0.1_projection_cp_1.0__2_6_2020/logs/reload_info_ppl.txt
+	**Reload PPL results**          ->  ./model/<model_dir>/logs/reload_info_ppl.txt
 
 
 ## In case of reload use following command line arguments
-> --reload              True
-> --reload-model-dir:   20NSshort_ALL_BERT_emb_glove_1.0_emb_lambda_manual_1.0_0.5_0.1_1.0_ftt__bert__act_tanh_hid_200_vocab_1448_lr_0.0001_gvt_loss_True_manual0.1_0.01_0.001_0.1_projection_cp_1.0__2_6_2020/
+
+	--reload              True
+	--reload-model-dir:   <model_dir>/
